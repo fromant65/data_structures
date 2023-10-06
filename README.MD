@@ -4,8 +4,8 @@ This project implements a simple linked list in C. The linked list supports basi
 
 ## Files
 
-- `lista.h`: This header file contains the declarations of the `Node` and `LinkedList` structures and the functions for manipulating the linked list.
-- `lista.c`: This source file contains the definitions of the functions for manipulating the linked list.
+- `list.h`: This header file contains the declarations of the `Node` and `LinkedList` structures and the functions for manipulating the linked list.
+- `list.c`: This source file contains the definitions of the functions for manipulating the linked list.
 - `main.c`: This source file contains the `main` function that tests the linked list functions.
 
 ## Structures
@@ -25,7 +25,7 @@ This project implements a simple linked list in C. The linked list supports basi
 
 You can compile the project with `gcc`:
 
-`bash gcc -c main.c lista.c gcc main.o lista.o -o program`
+`bash gcc -c main.c list.c gcc main.o list.o -o program`
 
 Or you can use the `make` command to for an easier compilation process.
 

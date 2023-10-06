@@ -1,8 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <locale.h>
-#include <windows.h>
-#include "lista.h"
+#include "./linked_list/list.h"
 
 int main()
 {

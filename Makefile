@@ -1,8 +1,8 @@
 CC=gcc
 CFLAGS=-I.
 
-DEPS = lista.h
-OBJ = main.o lista.o
+DEPS = list.h
+OBJ = main.o list.o
 
 %.o: %.c $(DEPS)
 	$(CC) -c -o $@ $< $(CFLAGS)
@@ -18,7 +18,7 @@ main: $(OBJ)
 # DEPS is a list of header files that your .c files depend on.
 # OBJ is a list of object files that need to be linked to create the final executable. 
 # The .o files are created from .c files with the same name. So, main.c is compiled to main.o, 
-# and lista.c is compiled to lista.o.
+# and list.c is compiled to list.o.
 # The %.o: %.c $(DEPS) line is a rule that tells make how to build .o files from .c files. 
 # The % is a wildcard that matches any file name. So, this rule says that any .o file depends on a .c file 
 # with the same name and the header files in DEPS. The command that follows ($(CC) -c -o $@ $< $(CFLAGS)) 

@@ -1,13 +1,13 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "lista.h"
+#include "list.h"
 
 LinkedList *newList()
 {
     LinkedList *l = malloc(sizeof(LinkedList));
     if (l == NULL)
     {
-        printf("Error al crear la lista\n");
+        printf("Mistake at create the list\n");
         exit(1);
     }
     l->first = NULL;
@@ -20,7 +20,7 @@ void push(LinkedList *l, int value)
     Node *n = malloc(sizeof(Node));
     if (n == NULL)
     {
-        printf("Error al insertar en la lista\n");
+        printf("Mistake at insert elements to the list\n");
         exit(1);
     }
     n->next = NULL;
@@ -45,7 +45,7 @@ void delete_item(LinkedList *l, int value)
 {
     if (l->first == NULL)
     {
-        printf("La lista esta vacia\n");
+        printf("The list are empty\n");
         return;
     }
     else
@@ -59,7 +59,7 @@ void delete_item(LinkedList *l, int value)
         }
         if (aux == NULL)
         {
-            printf("No se encontro el valor %d\n", value);
+            printf("The value doesn't exists %d\n", value);
             return;
         }
         if (ant == NULL)
@@ -79,7 +79,7 @@ void print_list(LinkedList *l)
 {
     if (l->first == NULL)
     {
-        printf("La lista esta vacia\n");
+        printf("The list are voi\n");
         return;
     }
     Node *aux = l->first;
