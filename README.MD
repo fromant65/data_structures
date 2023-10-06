@@ -25,7 +25,7 @@ This project implements a simple linked list in C. The linked list supports basi
 
 You can compile the project with `gcc`:
 
-`bash gcc -c main.c list.c gcc main.o list.o -o program`
+`gcc -c ./main.c ./linked_list/list.c ./linked_list/test.c | gcc ./main.o ./list.o ./test.o -o program`
 
 Or you can use the `make` command to for an easier compilation process.
 
