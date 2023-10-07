@@ -31,7 +31,9 @@ For IntStack:
 - `push()`: Adds a value to the stack.
 - `pop()`: Removes the last value from the stack and returns it.
 - `free_stack()`: Removes all elements from the stack and deletes it.
-  For IntLinkedList:
+
+For IntLinkedList:
+
 - `newList()`: Creates a new linked list and returns a pointer to it.
 - `push_item()`: Adds an element to the end of the list.
 - `add_item()`: Adds an element to the list at the specified index.
