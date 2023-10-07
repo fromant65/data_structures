@@ -1,21 +1,18 @@
-#include "list.h"
+#include "int_list.h"
 
 void linkedTest()
 {
-    LinkedList *l = newList();
-
+    IntLinkedList *l = newList();
     print_list(l);
-    push(l, 1);
+    push_item(l, 10);
     print_list(l);
-    push(l, 2);
+    add_item(l, 2, 0);
     print_list(l);
-    push(l, 3);
-    print_list(l);
-    push(l, 5);
-    print_list(l);
-    delete_item(l, 2);
+    add_item(l, 3, 1);
     print_list(l);
     delete_item(l, 4);
+    print_list(l);
+    delete_item(l, 10);
     print_list(l);
     free_list(l);
 }

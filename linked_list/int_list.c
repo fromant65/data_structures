@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.h"
+#include "int_list.h"
+#include "../nodes/int_node.h"
 
 LinkedList *newList()
 {
@@ -79,7 +80,7 @@ void print_list(LinkedList *l)
 {
     if (l->first == NULL)
     {
-        printf("The list are void\n");
+        printf("The list are voi\n");
         return;
     }
     Node *aux = l->first;
