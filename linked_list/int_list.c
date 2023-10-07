@@ -1,13 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "list.h"
+#include "int_list.h"
+#include "../nodes/int_node.h"
 
-LinkedList *newList()
+IntLinkedList *newList()
 {
-    LinkedList *l = malloc(sizeof(LinkedList));
+    IntLinkedList *l = malloc(sizeof(IntLinkedList));
     if (l == NULL)
     {
-        printf("Mistake at create the list\n");
+        printf("There was an error creating the list\n");
         exit(1);
     }
     l->first = NULL;
@@ -15,9 +16,9 @@ LinkedList *newList()
     return l;
 }
 
-void push(LinkedList *l, int value)
+void push_item(IntLinkedList *l, int value)
 {
-    Node *n = malloc(sizeof(Node));
+    IntNode *n = malloc(sizeof(IntNode));
     if (n == NULL)
     {
         printf("Mistake at insert elements to the list\n");
@@ -31,7 +32,7 @@ void push(LinkedList *l, int value)
     }
     else
     {
-        Node *aux = l->first;
+        IntNode *aux = l->first;
         while (aux->next != NULL)
         {
             aux = aux->next;
@@ -41,7 +42,39 @@ void push(LinkedList *l, int value)
     l->size++;
 }
 
-void delete_item(LinkedList *l, int value)
+void add_item(IntLinkedList *l, int value, int index)
+{
+    if (index > l->size)
+    {
+        printf("Indicated index is greater than list size");
+        return;
+    }
+    IntNode *n = malloc(sizeof(IntNode));
+    if (n == NULL)
+    {
+        printf("Mistake at insert elements to the list\n");
+        exit(1);
+    }
+    n->value = value;
+    if (l->first == NULL)
+    {
+        n->next = NULL;
+        l->first = n;
+    }
+    else
+    {
+        IntNode *aux = l->first;
+        for (int i = 0; i < index; i++)
+        {
+            aux = aux->next;
+        }
+        n->next = aux->next;
+        aux->next = n;
+    }
+    l->size++;
+}
+
+void delete_item(IntLinkedList *l, int value)
 {
     if (l->first == NULL)
     {
@@ -50,8 +83,8 @@ void delete_item(LinkedList *l, int value)
     }
     else
     {
-        Node *aux = l->first;
-        Node *ant = NULL;
+        IntNode *aux = l->first;
+        IntNode *ant = NULL;
         while (aux != NULL && aux->value != value)
         {
             ant = aux;
@@ -75,14 +108,19 @@ void delete_item(LinkedList *l, int value)
     }
 }
 
-void print_list(LinkedList *l)
+void print_list(IntLinkedList *l)
 {
-    if (l->first == NULL)
+    if (l == NULL)
     {
-        printf("The list are voi\n");
+        printf("The list is not defined\n");
         return;
     }
-    Node *aux = l->first;
+    if (l->first == NULL)
+    {
+        printf("The list is empty\n");
+        return;
+    }
+    IntNode *aux = l->first;
     while (aux != NULL)
     {
         printf("%d, ", aux->value);
@@ -91,9 +129,8 @@ void print_list(LinkedList *l)
     printf("\n");
 }
 
-void free_list(LinkedList *l)
+void free_list(IntLinkedList *l)
 {
-
     if (l->first == NULL)
     {
         free(l);
@@ -101,11 +138,13 @@ void free_list(LinkedList *l)
     }
     else
     {
-        Node *aux = l->first;
-        for (Node *next; aux != NULL; aux = next)
+        IntNode *aux = l->first;
+        IntNode *next;
+        while (aux != NULL)
         {
             next = aux->next;
             free(aux);
+            aux = next;
         }
         free(l);
     }
