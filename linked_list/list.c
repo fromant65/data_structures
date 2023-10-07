@@ -79,7 +79,7 @@ void print_list(LinkedList *l)
 {
     if (l->first == NULL)
     {
-        printf("The list are voi\n");
+        printf("The list are void\n");
         return;
     }
     Node *aux = l->first;

@@ -1,9 +1,17 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./linked_list/test.h "
+
+#include "./queue/int_queue.h"
 
 int main()
 {
-    linkedTest();
+    Queue *q = newQueue();
+
+    push(q, 4);
+    print_queue(q);
+
+    push(q, 6);
+    push(q, 8);
+    print_queue(q);
     return 0;
 }
