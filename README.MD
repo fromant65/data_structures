@@ -4,12 +4,12 @@ This project is about data structures. It includes three structures: IntNode, In
 
 ## Structures:
 
-Here's a list of the structures of the project
+Here's a description of the structures of the project
 
 ### IntNode:
 
-- It represents a node in a linked list.
-- It has two fields: "value" which stores an integer value, and "next" which points to the next node in the list.
+- It represents a node for a linear structure of integers.
+- It has two fields: "value" which stores an integer value, and "next" which points to another node.
 
 ### IntStack:
 
@@ -51,4 +51,4 @@ Or you can use the `make` command to for an easier compilation process. For this
 
 ## Usage
 
-After compiling, run the program with ./main
+After compiling, run the program with `./main`
