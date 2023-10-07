@@ -1,34 +1,52 @@
-# LinkedList Project in C
+# Data Structures in C
 
-This project implements a simple linked list in C. The linked list supports basic operations such as creating a new list, adding an element to the list, deleting an element from the list, printing the list, and freeing the list.
+This project is about data structures. It includes three structures: IntNode, IntStack, and IntLinkedList.
 
-## Files
+## Structures:
 
-- `list.h`: This header file contains the declarations of the `Node` and `LinkedList` structures and the functions for manipulating the linked list.
-- `list.c`: This source file contains the definitions of the functions for manipulating the linked list.
-- `main.c`: This source file contains the `main` function that tests the linked list functions.
+Here's a list of the structures of the project
 
-## Structures
+### IntNode:
 
-- `Node`: A node in the linked list. Each node contains an integer value and a pointer to the next node.
-- `LinkedList`: A linked list. It contains a pointer to the first node and the size of the list.
+- It represents a node in a linked list.
+- It has two fields: "value" which stores an integer value, and "next" which points to the next node in the list.
 
-## Functions
+### IntStack:
 
-- `LinkedList *newList()`: Creates a new linked list and returns a pointer to it.
-- `void push(LinkedList *l, int value)`: Adds an element to the end of the list.
-- `void delete_item(LinkedList *l, int value)`: Deletes an element from the list.
-- `void print_list(LinkedList *l)`: Prints the elements of the list.
-- `void free_list(LinkedList *l)`: Frees the memory allocated for the list.
+- It represents a stack data structure.
+- It has one field: "last" which points to the last node in the stack.
+
+### IntLinkedList:
+
+- It represents a linked list data structure.
+- It has two fields: "first" which points to the first node in the list, and "size" which stores the number of elements in the list.
+
+## Methods
+
+The project provides functions to perform various operations on these data structures:
+
+For IntStack:
+
+- `newStack()`: Creates a new stack and returns a pointer to it.
+- `push()`: Adds a value to the stack.
+- `pop()`: Removes the last value from the stack and returns it.
+- `free_stack()`: Removes all elements from the stack and deletes it.
+  For IntLinkedList:
+- `newList()`: Creates a new linked list and returns a pointer to it.
+- `push_item()`: Adds an element to the end of the list.
+- `add_item()`: Adds an element to the list at the specified index.
+- `delete_item()`: Deletes an element from the list.
+- `print_list()`: Prints the elements of the list.
+- `free_list()`: Removes all elements from the list and deletes it.
 
 ## Compilation
 
-You can compile the project with `gcc`:
+You can compile the project with gcc:
 
-`gcc -c ./main.c ./linked_list/list.c ./linked_list/test.c | gcc ./main.o ./list.o ./test.o -o program`
+`gcc -c ./main.c ./linked_list/int_list.c ./linked_list/test.c ./stack/int_stack.c ./stack/stack_test.c | gcc ./main.o ./list.o ./test.o ./int_stack.o ./stack_test.o -o main`
 
-Or you can use the `make` command to for an easier compilation process.
+Or you can use the `make` command to for an easier compilation process. For this, you will need the make utility.
 
 ## Usage
 
-After compiling the project, you can run the program with `./program`.
+After compiling, run the program with ./main
