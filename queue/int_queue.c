@@ -46,6 +46,27 @@ void push(Queue *q, int value)
     q->size++;
 }
 
+void delete_item(Queue *q)
+{
+    if (q->first == NULL)
+    {
+        printf("The queue are empty\n");
+        return;
+    }
+
+    Node *aux = q->first;
+
+    q->first = q->first->next;
+    q->size--;
+
+    if (q->size == 0)
+    {
+        q->last = NULL;
+    }
+
+    free(aux);
+}
+
 void print_queue(Queue *q)
 {
     if (q->first == NULL)
