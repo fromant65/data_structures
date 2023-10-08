@@ -1,7 +1,7 @@
 #ifndef INT_TREE_NODE_H
 #define INT_TREE_NODE_H
 
-typedef struct
+typedef struct IntTreeNode
 {
     int value;
     struct IntTreeNode *leftChild;
