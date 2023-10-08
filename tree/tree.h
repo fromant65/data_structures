@@ -3,7 +3,8 @@
 
 typedef struct
 {
-    struct IntTreeNode *head;
+    IntTreeNode *head;
+    int size;
 } BinarySearchTree;
 
 BinarySearchTree *newTree();
@@ -11,10 +12,8 @@ BinarySearchTree *listToTree(int values[], int size);
 void addElement(BinarySearchTree *tree, int value);
 int searchElement(BinarySearchTree *tree, int value);
 void deleteElement(BinarySearchTree *tree, int value);
-IntTreeNode *deleteNode(IntTreeNode *root, int value);
+void freeTree(BinarySearchTree *tree);
 IntTreeNode *minValueNode(IntTreeNode *node);
 IntTreeNode *maxValueNode(IntTreeNode *node);
-void pre_order_print(IntTreeNode *head);
-void in_order_print(IntTreeNode *head);
-void post_order_print(IntTreeNode *head);
+char *stringify_tree(BinarySearchTree *t, char method[]);
 #endif

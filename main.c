@@ -1,16 +1,16 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include "./linked_list/test.h "
+#include "./linked_list/list_test.h"
 #include "./stack/stack_test.h"
 #include "./tree/tree_test.h"
 
 int main()
 {
-    linkedTest();
+    test_linked_list();
     printf("\nEnd of linked list test\n\n");
     test_stack();
-    printf("\n\nEnd of stack test\n\n");
+    printf("\nEnd of stack test\n\n");
     test_tree();
-    printf("\n\nEnd of tree test\n\n");
+    printf("\nEnd of tree test\n\n");
     return 0;
 }

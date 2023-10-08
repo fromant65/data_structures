@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include "int_list.h"
 #include "../nodes/int_node.h"
 
@@ -61,10 +62,15 @@ void add_item(IntLinkedList *l, int value, int index)
         n->next = NULL;
         l->first = n;
     }
+    else if (index == 0)
+    {
+        n->next = l->first;
+        l->first = n;
+    }
     else
     {
         IntNode *aux = l->first;
-        for (int i = 0; i < index; i++)
+        for (int i = 1; i < index; i++)
         {
             aux = aux->next;
         }
@@ -108,25 +114,48 @@ void delete_item(IntLinkedList *l, int value)
     }
 }
 
+char *stringify_list(IntLinkedList *l)
+{
+    int size = l->size * 12;
+    char *str = malloc(size * sizeof(char));
+    if (str == NULL)
+    {
+        printf("Memory allocation failed\n");
+        exit(1);
+    }
+
+    str[0] = '\0'; // Start with an empty string
+
+    IntNode *current = l->first;
+    while (current != NULL)
+    {
+        // Check if the string needs to be resized
+        while (snprintf(NULL, 0, "%s%d ", str, current->value) >= size)
+        {
+            size *= 2;
+            str = realloc(str, size * sizeof(char));
+            if (str == NULL)
+            {
+                printf("Memory allocation failed\n");
+                exit(1);
+            }
+        }
+
+        // Append the current value to the string
+        sprintf(str + strlen(str), "%d ", current->value);
+
+        current = current->next;
+    }
+
+    // Add the newline at the end
+    sprintf(str + strlen(str), "\n");
+
+    return str;
+}
+
 void print_list(IntLinkedList *l)
 {
-    if (l == NULL)
-    {
-        printf("The list is not defined\n");
-        return;
-    }
-    if (l->first == NULL)
-    {
-        printf("The list is empty\n");
-        return;
-    }
-    IntNode *aux = l->first;
-    while (aux != NULL)
-    {
-        printf("%d, ", aux->value);
-        aux = aux->next;
-    }
-    printf("\n");
+    printf(stringify_list(l));
 }
 
 void free_list(IntLinkedList *l)
