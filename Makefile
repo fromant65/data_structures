@@ -2,10 +2,10 @@
 CC = gcc
 
 # Define any directories containing header files
-INCLUDES = -I./nodes -I./linked_list -I./stack
+INCLUDES = -I./nodes -I./linked_list -I./stack -I./tree
 
 # Define the source file directories
-DIRS = nodes linked_list stack
+DIRS = nodes linked_list stack tree
 
 # Use wildcard to get all C files in the defined directories
 SRCS = $(wildcard $(addsuffix /*.c, $(DIRS))) main.c
