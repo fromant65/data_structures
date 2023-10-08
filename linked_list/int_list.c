@@ -17,6 +17,7 @@ IntLinkedList *newList()
     return l;
 }
 
+
 void push_item(IntLinkedList *l, int value)
 {
     IntNode *n = malloc(sizeof(IntNode));
