@@ -1,20 +1,21 @@
 #include <stdio.h>
 #include <stdlib.h>
+
 #include "./linked_list/list_test.h"
 #include "./stack/stack_test.h"
-#include "./queue/int_queue.h"
+#include "./queue/queue_test.h"
 #include "./tree/tree_test.h"
 
 int main()
 {
-    test_linked_list();
-    printf("\nEnd of linked list test\n\n");
-    test_stack();
-    printf("\nEnd of stack test\n\n");
+    /* test_linked_list();
+    printf("\nEnd of linked list test\n\n"); */
+    /* test_stack();
+    printf("\nEnd of stack test\n\n"); */
     test_queue();
     printf("\n\nEnd of queue test\n\n");
-    test_tree();
-    printf("\nEnd of tree test\n\n");
+    /* test_tree();
+    printf("\nEnd of tree test\n\n"); */
 
     return 0;
 }

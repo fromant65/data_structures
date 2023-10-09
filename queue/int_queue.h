@@ -1,17 +1,12 @@
-typedef struct Node
-{
-    int value;
-    struct Node *next;
-} Node;
-
 typedef struct Queue
 {
-    struct Node *first;
-    struct Node *last;
+    struct IntNode *first;
+    struct IntNode *last;
     int size;
-} Queue;
+} IntQueue;
 
-Queue *newQueue();
-void push(Queue *q, int value);
-void delete_item(Queue *q);
-void print_queue(Queue *q);
+IntQueue *newQueue();
+void push_item(IntQueue *q, int value); // add new elements to queue struct
+void delete_item(IntQueue *q);          // delete the first  element from queue struct
+void print_queue(IntQueue *q);          // print the queue struct
+void free_queue(IntQueue *q);

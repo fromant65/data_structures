@@ -3,6 +3,8 @@
         "*.ejs": "html",
         "test.h": "c",
         "queue.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "int_queue.h": "c",
+        "int_node.h": "c"
     }
 }

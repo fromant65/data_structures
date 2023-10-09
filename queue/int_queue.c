@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "../nodes/int_node.h"
 #include "int_queue.h"
 
-Queue *newQueue()
+IntQueue *newQueue()
 {
-    Queue *q = malloc(sizeof(Queue));
+    IntQueue *q = malloc(sizeof(IntQueue));
 
     if (q == NULL)
     {
@@ -14,13 +15,14 @@ Queue *newQueue()
     }
     q->first = NULL;
     q->last = NULL;
+    q->size = 0;
 
     return q;
 }
 
-void push(Queue *q, int value)
+void push_item(IntQueue *q, int value)
 {
-    Node *n = malloc(sizeof(Queue));
+    IntNode *n = malloc(sizeof(IntQueue));
 
     if (n == NULL)
     {
@@ -39,14 +41,15 @@ void push(Queue *q, int value)
     else
     {
 
-        q->last->next = n;
+        IntNode *auxLastNext = q->last;
+        auxLastNext->next = n;
         q->last = n;
     }
 
     q->size++;
 }
 
-void delete_item(Queue *q)
+void delete_item(IntQueue *q)
 {
     if (q->first == NULL)
     {
@@ -54,9 +57,10 @@ void delete_item(Queue *q)
         return;
     }
 
-    Node *aux = q->first;
+    IntNode *aux = q->first;
 
-    q->first = q->first->next;
+    IntNode *auxFirstNext = q->first;
+    q->first = auxFirstNext->next;
     q->size--;
 
     if (q->size == 0)
@@ -67,7 +71,7 @@ void delete_item(Queue *q)
     free(aux);
 }
 
-void print_queue(Queue *q)
+void print_queue(IntQueue *q)
 {
     if (q->first == NULL)
     {
@@ -75,11 +79,32 @@ void print_queue(Queue *q)
         return;
     }
 
-    Node *aux = q->first;
+    IntNode *aux = q->first;
     while (aux != NULL)
     {
         printf("%d, ", aux->value);
         aux = aux->next;
     }
     printf("\n");
+}
+
+void free_queue(IntQueue *q)
+{
+    if (q->first == NULL)
+    {
+        free(q);
+        return;
+    }
+    else
+    {
+        IntNode *aux = q->first;
+        IntNode *next;
+        while (aux != q->last)
+        {
+            next = aux->next;
+            free(aux);
+            aux = next;
+        }
+        free(q);
+    }
 }
