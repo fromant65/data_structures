@@ -28,10 +28,10 @@ void test_queue()
         {
             printf("push_item function not wotking properly\n");
         }
-        /* if (!t_delete_item)
+        if (!t_delete_item)
         {
             printf("delete_item function not wotking properly\n");
-        } */
+        }
     }
 }
 
