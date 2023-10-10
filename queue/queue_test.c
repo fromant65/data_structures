@@ -9,9 +9,9 @@ void test_queue()
     printf("Testing newQueue function...\n");
     int t_new_queue = test_new_queue();
     printf("Testing push_item function...\n");
-    int t_push_item = test_push_item();
+    int t_push_item = test_push_item_queue();
     printf("Testing delete_item function...\n");
-    int t_delete_item = test_delete_item();
+    int t_delete_item = test_delete_item_queue();
 
     int test_result = t_new_queue && t_push_item;
     if (test_result)
@@ -44,13 +44,13 @@ int test_new_queue()
     return predicate;
 }
 
-int test_push_item()
+int test_push_item_queue()
 {
     IntQueue *queue = newQueue();
     int predicate = 1;
 
-    push_item(queue, 1);
-    push_item(queue, 2);
+    queue_push_item(queue, 1);
+    queue_push_item(queue, 2);
 
     IntNode *aux = queue->first;
 
@@ -64,29 +64,29 @@ int test_push_item()
     return predicate;
 }
 
-int test_delete_item()
+int test_delete_item_queue()
 {
     IntQueue *queue = newQueue();
 
     int predicate = 1;
-    push_item(queue, 1);
-    push_item(queue, 2);
-    push_item(queue, 3);
+    queue_push_item(queue, 1);
+    queue_push_item(queue, 2);
+    queue_push_item(queue, 3);
 
     IntNode *aux = queue->first;
     aux = aux->next;
 
-    delete_item(queue);
+    queue_delete_item(queue);
 
     predicate &= (aux->value == 2);
 
-    delete_item(queue);
+    queue_delete_item(queue);
 
     aux = queue->first;
     IntNode *aux2 = queue->last;
 
     predicate &= (aux->value == 3 && aux->value == aux2->value);
-    delete_item(queue);
+    queue_delete_item(queue);
 
     aux = queue->first;
 

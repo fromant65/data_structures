@@ -20,7 +20,7 @@ IntQueue *newQueue()
     return q;
 }
 
-void push_item(IntQueue *q, int value)
+void queue_push_item(IntQueue *q, int value)
 {
     IntNode *n = malloc(sizeof(IntQueue));
 
@@ -49,7 +49,7 @@ void push_item(IntQueue *q, int value)
     q->size++;
 }
 
-void delete_item(IntQueue *q)
+void queue_delete_item(IntQueue *q)
 {
     if (q->first == NULL)
     {
