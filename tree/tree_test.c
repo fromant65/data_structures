@@ -17,8 +17,8 @@ int test_new_tree()
 
 int test_list_to_tree()
 {
-    int list[] = {10, 15, 5, 8, 2, 1, 13, 14, 11, 12};
-    BinarySearchTree *tree = listToTree(list, 10);
+    int list[] = {10,5,2,3,8,15,17,11,14,13,11};
+    BinarySearchTree *tree = listToTree(list, 11);
     int predicate = 1;
     IntTreeNode *aux = tree->head;
     predicate &= aux->value == 10;
@@ -26,6 +26,7 @@ int test_list_to_tree()
     predicate &= aux->value == 15;
     aux = aux->leftChild;
     predicate &= aux->value == 13;
+    printf("%s", stringify_tree(tree, "in"));
     freeTree(tree);
     return predicate;
 }

@@ -35,14 +35,13 @@ void addElement(BinarySearchTree *tree, int value)
     IntTreeNode *prev = tree->head;
     while (aux != NULL)
     {
+        prev = aux;
         if (value < aux->value)
-        {
-            prev = aux;
+        { 
             aux = prev->leftChild;
         }
         else if (value > aux->value)
-        {
-            prev = aux;
+        {   
             aux = prev->rightChild;
         }
         else
@@ -137,9 +136,12 @@ void deleteElement(BinarySearchTree *tree, int value)
         printf("The tree is empty\n");
         return;
     }
-    IntTreeNode *head = deleteNode(tree->head, value);
-    tree->head = head;
-    tree->size = tree->size - 1;
+    if(searchElement(tree,value))
+    {   
+        IntTreeNode *head = deleteNode(tree->head, value);
+        tree->head = head;
+        tree->size = tree->size - 1;
+    }
 }
 
 void freeNodes(IntTreeNode *head)
