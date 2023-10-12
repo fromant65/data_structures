@@ -3,6 +3,10 @@
 #include "stack_test.h"
 #include "../nodes/int_node.h"
 
+int test_newStack();
+int test_push();
+int test_pop();
+
 void test_stack()
 {
     printf("Testing newStack function...\n");

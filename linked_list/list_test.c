@@ -4,6 +4,12 @@
 #include "int_list.h"
 #include "../nodes/int_node.h"
 
+int test_new_list();
+int test_push_item();
+int test_add_item();
+int test_delete_item();
+int test_stringify_list();
+
 void test_linked_list()
 {
     printf("Testing newList function...\n");

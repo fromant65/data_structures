@@ -4,6 +4,10 @@
 #include "../nodes/int_node.h"
 #include "int_queue.h"
 
+int test_new_queue();
+int test_push_item_queue();
+int test_delete_item_queue();
+
 void test_queue()
 {
     printf("Testing newQueue function...\n");
