@@ -5,6 +5,79 @@
 #include "../nodes/int_tree_node.h"
 #include "../tree/tree.h"
 
+int test_new_tree();
+int test_list_to_tree();
+int test_add_element();
+int test_search_element();
+int check_BST_property(IntTreeNode *head);
+int test_delete_element();
+int test_max_value_node();
+int test_min_value_node();
+int test_stringify_tree();
+
+void test_tree()
+{
+    printf("Testing new_tree function...\n");
+    int t_new_tree = test_new_tree();
+    printf("Testing list_to_tree function...\n");
+    int t_list_to_tree = test_list_to_tree();
+    printf("Testing add_element function...\n");
+    int t_add_element = test_add_element();
+    printf("Testing search_element function...\n");
+    int t_search_element = test_search_element();
+    printf("Testing delete_element function...\n");
+    int t_delete_element = test_delete_element();
+    printf("Testing max_value_node function...\n");
+    int t_max_value_node = test_max_value_node();
+    printf("Testing min_value_node function...\n");
+    int t_min_value_node = test_min_value_node();
+    printf("Testing stringify_tree function...\n");
+    int t_stringify_tree = test_stringify_tree();
+
+    int test_result = t_new_tree && t_list_to_tree && t_add_element && t_search_element && t_delete_element && t_max_value_node && t_min_value_node && t_stringify_tree;
+
+    if (test_result)
+    {
+        printf("Tests for tree have passed successfully\n");
+    }
+    else
+    {
+        printf("Tests have failed:\n");
+        if (!t_new_tree)
+        {
+            printf("new_tree function not working properly\n");
+        }
+        if (!t_list_to_tree)
+        {
+            printf("list_to_tree function not working properly\n");
+        }
+        if (!t_add_element)
+        {
+            printf("add_element function not working properly\n");
+        }
+        if (!t_search_element)
+        {
+            printf("search_element function not working properly\n");
+        }
+        if (!t_delete_element)
+        {
+            printf("delete_element function not working properly\n");
+        }
+        if (!t_max_value_node)
+        {
+            printf("max_value_node function not working properly\n");
+        }
+        if (!t_min_value_node)
+        {
+            printf("min_value_node function not working properly\n");
+        }
+        if (!t_stringify_tree)
+        {
+            printf("stringify_tree function not working properly\n");
+        }
+    }
+}
+
 int test_new_tree()
 {
     BinarySearchTree *tree = newTree();
@@ -17,7 +90,7 @@ int test_new_tree()
 
 int test_list_to_tree()
 {
-    int list[] = {10,5,2,3,8,15,17,11,14,13,11};
+    int list[] = {10, 5, 2, 3, 8, 15, 17, 11, 14, 13, 11};
     BinarySearchTree *tree = listToTree(list, 11);
     int predicate = 1;
     IntTreeNode *aux = tree->head;
@@ -103,6 +176,7 @@ int test_max_value_node()
     freeTree(tree);
     return predicate;
 }
+
 int test_min_value_node()
 {
     int list[] = {10, 15, 5, 8, 2, 1, 13, 14, 11, 12};
@@ -112,6 +186,7 @@ int test_min_value_node()
     freeTree(tree);
     return predicate;
 }
+
 int test_stringify_tree()
 {
     int list[] = {10, 15, 5, 8, 2, 1, 13, 14, 11, 12};
@@ -128,67 +203,4 @@ int test_stringify_tree()
         !strcmp(pre_order, "10 5 2 1 8 15 13 11 12 14 \n") &&
         !strcmp(post_order, "1 2 8 5 12 11 14 13 15 10 \n");
     return predicate;
-}
-
-void test_tree()
-{
-    printf("Testing new_tree function...\n");
-    int t_new_tree = test_new_tree();
-    printf("Testing list_to_tree function...\n");
-    int t_list_to_tree = test_list_to_tree();
-    printf("Testing add_element function...\n");
-    int t_add_element = test_add_element();
-    printf("Testing search_element function...\n");
-    int t_search_element = test_search_element();
-    printf("Testing delete_element function...\n");
-    int t_delete_element = test_delete_element();
-    printf("Testing max_value_node function...\n");
-    int t_max_value_node = test_max_value_node();
-    printf("Testing min_value_node function...\n");
-    int t_min_value_node = test_min_value_node();
-    printf("Testing stringify_tree function...\n");
-    int t_stringify_tree = test_stringify_tree();
-
-    int test_result = t_new_tree && t_list_to_tree && t_add_element && t_search_element && t_delete_element && t_max_value_node && t_min_value_node && t_stringify_tree;
-
-    if (test_result)
-    {
-        printf("Tests for tree have passed successfully\n");
-    }
-    else
-    {
-        printf("Tests have failed:\n");
-        if (!t_new_tree)
-        {
-            printf("new_tree function not working properly\n");
-        }
-        if (!t_list_to_tree)
-        {
-            printf("list_to_tree function not working properly\n");
-        }
-        if (!t_add_element)
-        {
-            printf("add_element function not working properly\n");
-        }
-        if (!t_search_element)
-        {
-            printf("search_element function not working properly\n");
-        }
-        if (!t_delete_element)
-        {
-            printf("delete_element function not working properly\n");
-        }
-        if (!t_max_value_node)
-        {
-            printf("max_value_node function not working properly\n");
-        }
-        if (!t_min_value_node)
-        {
-            printf("min_value_node function not working properly\n");
-        }
-        if (!t_stringify_tree)
-        {
-            printf("stringify_tree function not working properly\n");
-        }
-    }
 }

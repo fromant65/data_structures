@@ -1,9 +1,11 @@
 #ifndef LIST_H
 #define LIST_H
 
+#include "../nodes/int_node.h"
+
 typedef struct
 {
-    struct IntNode *first;
+    IntNode *first;
     int size;
 } IntLinkedList;
 
