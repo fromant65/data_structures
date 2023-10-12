@@ -1,54 +1,60 @@
-# Data Structures in C
+# C Data Structures Project
 
-This project is about data structures. It includes three structures: IntNode, IntStack, and IntLinkedList.
+This project includes various data structures implemented in C, each with its own dedicated header file and individual documentation. The available data structures are as follows:
 
-## Structures:
+1. `int_node`: Simple nodes with an optional child node.
 
-Here's a description of the structures of the project
+   - Header File: [int_node.h]
+   - Documentation: [int_node.md]
 
-### IntNode:
+2. `int_tree_node`: Binary tree nodes used in binary search trees.
 
-- It represents a node for a linear structure of integers.
-- It has two fields: "value" which stores an integer value, and "next" which points to another node.
+   - Header File: [int_tree_node.h]
+   - Documentation: [int_tree_node.md]
 
-### IntStack:
+3. `stack`: A Last-In-First-Out (LIFO) stack for managing integer values.
 
-- It represents a stack data structure.
-- It has one field: "last" which points to the last node in the stack.
+   - Header File: [stack.h]
+   - Documentation: [stack.md]
 
-### IntLinkedList:
+4. `queue`: A First-In-First-Out (FIFO) queue for managing integer values.
 
-- It represents a linked list data structure.
-- It has two fields: "first" which points to the first node in the list, and "size" which stores the number of elements in the list.
+   - Header File: [int_queue.h]
+   - Documentation: [queue.md]
 
-## Methods
+5. `linked_list`: A linked list structure for managing integer values.
 
-The project provides functions to perform various operations on these data structures:
+   - Header File: [list.h]
+   - Documentation: [list.md]
 
-For IntStack:
+6. `tree`: A binary search tree structure for managing integer values.
+   - Header File: [tree.h]
+   - Documentation: [tree.md]
 
-- `newStack()`: Creates a new stack and returns a pointer to it.
-- `push()`: Adds a value to the stack.
-- `pop()`: Removes the last value from the stack and returns it.
-- `free_stack()`: Removes all elements from the stack and deletes it.
+## How to Compile and Run
 
-For IntLinkedList:
+To compile and run the project, a `makefile` is provided in the repository. Please follow these steps:
 
-- `newList()`: Creates a new linked list and returns a pointer to it.
-- `push_item()`: Adds an element to the end of the list.
-- `add_item()`: Adds an element to the list at the specified index.
-- `delete_item()`: Deletes an element from the list.
-- `print_list()`: Prints the elements of the list.
-- `free_list()`: Removes all elements from the list and deletes it.
+1. Open a terminal or command prompt.
 
-## Compilation
+2. Navigate to the project directory.
 
-You can compile the project with gcc:
+3. To compile the project, execute the following command:
 
-`gcc -c ./main.c ./linked_list/int_list.c ./linked_list/test.c ./stack/int_stack.c ./stack/stack_test.c | gcc ./main.o ./list.o ./test.o ./int_stack.o ./stack_test.o -o main`
+```shell
+   make
+```
 
-Or you can use the `make` command to for an easier compilation process. For this, you will need the make utility.
+This command will build the project using the makefile.
 
-## Usage
+4. Once the project is successfully compiled, you can run it by executing:
 
-After compiling, run the program with `./main`
+```shell
+   ./main
+```
+
+The makefile creates an executable named main by default.
+
+You can explore and test the data structures and their functionalities by running the main executable.
+
+Remember to refer to the individual documentation files linked above for more details on each data structure and how to use them effectively.

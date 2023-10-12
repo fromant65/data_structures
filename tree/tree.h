@@ -1,6 +1,8 @@
 #ifndef TREE_H
 #define TREE_H
 
+#include "int_tree_node.h"
+
 typedef struct
 {
     IntTreeNode *head;
