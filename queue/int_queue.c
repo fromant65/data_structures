@@ -1,6 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #include "../nodes/int_node.h"
 #include "int_queue.h"
 
@@ -71,11 +71,37 @@ void queue_delete_item(IntQueue *q)
     free(aux);
 }
 
+int *queue_to_array(IntQueue *q)
+{
+    int *arr = malloc(sizeof(int) * q->size);
+    IntNode *node = q->first;
+    for (int i = 0; i < q->size; i++)
+    {
+        arr[i] = node->value;
+        node = node->next;
+    }
+    return arr;
+}
+
+char *stringify_queue(IntQueue *q)
+{
+    char *str = malloc(sizeof(char) * q->size * 12);
+    str[0] = '\0';
+    IntNode *node = q->first;
+    for (int i = 0; node != NULL; i++)
+    {
+        sprintf(str + strlen(str), "%d ", node->value);
+        node = node->next;
+    }
+    sprintf(str + strlen(str) - 1, "\n"); // Replacing the last blankspace with a line jump
+    return str;
+}
+
 void print_queue(IntQueue *q)
 {
     if (q->first == NULL)
     {
-        printf("The list are void\n");
+        printf("The queue is empty\n");
         return;
     }
 

@@ -4,18 +4,18 @@
 #include "../nodes/int_node.h"
 
 int test_newStack();
-int test_push();
-int test_pop();
+int test_stack_push();
+int test_stack_pop();
 
 void test_stack()
 {
     printf("Testing newStack function...\n");
     int t_new_stack = test_newStack();
-    printf("Testing push function...\n");
-    int t_push = test_push();
-    printf("Testing pop function...\n");
-    int t_pop = test_pop();
-    int test_result = t_new_stack && t_push && t_pop;
+    printf("Testing stack_push function...\n");
+    int t_stack_push = test_stack_push();
+    printf("Testing stack_pop function...\n");
+    int t_stack_pop = test_stack_pop();
+    int test_result = t_new_stack && t_stack_push && t_stack_pop;
     if (test_result)
     {
         printf("Tests for stack have passed successfully\n");
@@ -27,13 +27,13 @@ void test_stack()
         {
             printf("NewStack function not working properly\n");
         }
-        if (!t_push)
+        if (!t_stack_push)
         {
-            printf("Push function not working properly\n");
+            printf("stack_Push function not working properly\n");
         }
-        if (!t_pop)
+        if (!t_stack_pop)
         {
-            printf("Pop function not working properly\n");
+            printf("stack_Pop function not working properly\n");
         }
     }
 }
@@ -46,28 +46,28 @@ int test_newStack()
     return predicate;
 }
 
-int test_push()
+int test_stack_push()
 {
     int predicate = 1;
     IntStack *stack = newStack();
-    push(stack, 1);
+    stack_push(stack, 1);
     IntNode *last = stack->last;
     predicate &= (last->value == 1);
     free_stack(stack);
     return predicate;
 }
 
-int test_pop()
+int test_stack_pop()
 {
     int predicate = 1;
     IntStack *stack = newStack();
-    int first_pop = pop(stack);
-    predicate &= (first_pop == 0);
-    push(stack, 10);
-    push(stack, 20);
-    int second_pop = pop(stack);
+    int first_stack_pop = stack_pop(stack);
+    predicate &= (first_stack_pop == 0);
+    stack_push(stack, 10);
+    stack_push(stack, 20);
+    int second_stack_pop = stack_pop(stack);
     IntNode *last = stack->last;
-    predicate &= (second_pop == 20 && last->value == 10);
+    predicate &= (second_stack_pop == 20 && last->value == 10);
     free_stack(stack);
     return predicate;
 }
