@@ -15,7 +15,7 @@ IntStack *newStack()
     return stack;
 }
 
-void push(IntStack *stack, int value)
+void stack_push(IntStack *stack, int value)
 {
     IntNode *node = malloc(sizeof(IntNode));
     if (node == NULL)
@@ -28,7 +28,7 @@ void push(IntStack *stack, int value)
     stack->last = node;
 }
 
-int pop(IntStack *stack)
+int stack_pop(IntStack *stack)
 {
     if (stack->last == NULL)
     {

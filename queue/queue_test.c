@@ -18,8 +18,12 @@ void test_queue()
     int t_push_item = test_push_item_queue();
     printf("Testing delete_item function...\n");
     int t_delete_item = test_delete_item_queue();
+    printf("Testing queue_to_array function...\n");
+    int t_queue_to_array = test_queue_to_array();
+    printf("Testing stringify_queue function...\n");
+    int t_stringify_queue = test_stringify_queue();
 
-    int test_result = t_new_queue && t_push_item;
+    int test_result = t_new_queue && t_push_item && t_delete_item && t_queue_to_array && t_stringify_queue;
     if (test_result)
     {
         printf("Tests for queue have passed successfully\n");
@@ -37,6 +41,14 @@ void test_queue()
         if (!t_delete_item)
         {
             printf("delete_item function not wotking properly\n");
+        }
+        if (!t_queue_to_array)
+        {
+            printf("queue_to_array function not wotking properly\n");
+        }
+        if (!t_stringify_queue)
+        {
+            printf("stringify_queue function not wotking properly\n");
         }
     }
 }
