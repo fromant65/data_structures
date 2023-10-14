@@ -1,12 +1,14 @@
 #include <stdio.h>
 #include <stdlib.h>
-
+#include <string.h>
 #include "../nodes/int_node.h"
 #include "int_queue.h"
 
 int test_new_queue();
 int test_push_item_queue();
 int test_delete_item_queue();
+int test_queue_to_array();
+int test_stringify_queue();
 
 void test_queue()
 {
@@ -98,4 +100,28 @@ int test_delete_item_queue()
 
     free_queue(queue);
     return predicate;
+}
+
+int test_queue_to_array()
+{
+    IntQueue *q = newQueue();
+    int predicate;
+    queue_push_item(q, 1);
+    queue_push_item(q, 2);
+    queue_push_item(q, 3);
+    int *arr = queue_to_array(q);
+    predicate = arr[0] == 1 && arr[1] == 2 && arr[2] == 3;
+    return predicate;
+}
+int test_stringify_queue()
+{
+    IntQueue *q = newQueue();
+    queue_push_item(q, 1);
+    queue_push_item(q, 2);
+    queue_push_item(q, 3);
+    char *string = stringify_queue(q);
+    printf("List example: ");
+    print_queue(q);
+    free_queue(q);
+    return !strcmp(string, "1 2 3\n");
 }
