@@ -13,6 +13,7 @@ int check_BST_property(IntTreeNode *head);
 int test_delete_element();
 int test_max_value_node();
 int test_min_value_node();
+int test_tree_to_array();
 int test_stringify_tree();
 
 void test_tree()
@@ -31,10 +32,12 @@ void test_tree()
     int t_max_value_node = test_max_value_node();
     printf("Testing min_value_node function...\n");
     int t_min_value_node = test_min_value_node();
+    printf("Testing tree_to_array function...\n");
+    int t_tree_to_array = test_tree_to_array();
     printf("Testing stringify_tree function...\n");
     int t_stringify_tree = test_stringify_tree();
 
-    int test_result = t_new_tree && t_list_to_tree && t_add_element && t_search_element && t_delete_element && t_max_value_node && t_min_value_node && t_stringify_tree;
+    int test_result = t_new_tree && t_list_to_tree && t_add_element && t_search_element && t_delete_element && t_max_value_node && t_min_value_node && t_tree_to_array && t_stringify_tree;
 
     if (test_result)
     {
@@ -71,6 +74,10 @@ void test_tree()
         {
             printf("min_value_node function not working properly\n");
         }
+        if (!t_tree_to_array)
+        {
+            printf("tree_to_array function not working properly\n");
+        }
         if (!t_stringify_tree)
         {
             printf("stringify_tree function not working properly\n");
@@ -98,7 +105,7 @@ int test_list_to_tree()
     aux = aux->rightChild;
     predicate &= aux->value == 15;
     aux = aux->leftChild;
-    predicate &= aux->value == 13;
+    predicate &= aux->value == 11;
     printf("%s", stringify_tree(tree, "in"));
     freeTree(tree);
     return predicate;
@@ -187,6 +194,31 @@ int test_min_value_node()
     return predicate;
 }
 
+int test_tree_to_array()
+{
+    int list[] = {10, 15, 5, 8, 2, 1, 13, 14, 11, 12};
+    BinarySearchTree *tree = listToTree(list, 10);
+    int *in_order = tree_to_array(tree, "in");
+    int *pre_order = tree_to_array(tree, "pre");
+    int *post_order = tree_to_array(tree, "post");
+    freeTree(tree);
+
+    int predicate = 1;
+    predicate &=
+        pre_order[0] == 10 && pre_order[1] == 5 && pre_order[2] == 2 && pre_order[3] == 1 && pre_order[4] == 8 &&
+        pre_order[5] == 15 && pre_order[6] == 13 && pre_order[7] == 11 && pre_order[8] == 12 && pre_order[9] == 14;
+    predicate &=
+        in_order[0] == 1 && in_order[1] == 2 && in_order[2] == 5 && in_order[3] == 8 && in_order[4] == 10 &&
+        in_order[5] == 11 && in_order[6] == 12 && in_order[7] == 13 && in_order[8] == 14 && in_order[9] == 15;
+    predicate &=
+        post_order[0] == 1 && post_order[1] == 2 && post_order[2] == 8 && post_order[3] == 5 && post_order[4] == 12 &&
+        post_order[5] == 11 && post_order[6] == 14 && post_order[7] == 13 && post_order[8] == 15 && post_order[9] == 10;
+    free(in_order);
+    free(pre_order);
+    free(post_order);
+    return predicate;
+}
+
 int test_stringify_tree()
 {
     int list[] = {10, 15, 5, 8, 2, 1, 13, 14, 11, 12};
@@ -195,12 +227,15 @@ int test_stringify_tree()
     char *pre_order = stringify_tree(tree, "pre");
     char *post_order = stringify_tree(tree, "post");
     freeTree(tree);
-    printf("in order: %s", in_order);
     printf("pre order: %s", pre_order);
+    printf("in order: %s", in_order);
     printf("post order: %s", post_order);
     int predicate =
-        !strcmp(in_order, "1 2 5 8 10 11 12 13 14 15 \n") &&
-        !strcmp(pre_order, "10 5 2 1 8 15 13 11 12 14 \n") &&
-        !strcmp(post_order, "1 2 8 5 12 11 14 13 15 10 \n");
+        !strcmp(in_order, "1 2 5 8 10 11 12 13 14 15\n") &&
+        !strcmp(pre_order, "10 5 2 1 8 15 13 11 12 14\n") &&
+        !strcmp(post_order, "1 2 8 5 12 11 14 13 15 10\n");
+    free(in_order);
+    free(pre_order);
+    free(post_order);
     return predicate;
 }

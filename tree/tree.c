@@ -37,11 +37,11 @@ void addElement(BinarySearchTree *tree, int value)
     {
         prev = aux;
         if (value < aux->value)
-        { 
+        {
             aux = prev->leftChild;
         }
         else if (value > aux->value)
-        {   
+        {
             aux = prev->rightChild;
         }
         else
@@ -66,7 +66,6 @@ void addElement(BinarySearchTree *tree, int value)
 
 int searchElement(BinarySearchTree *tree, int value)
 {
-    IntTreeNode *new_node = newNode(value);
     IntTreeNode *aux = tree->head;
     while (aux != NULL && aux->value != value)
     {
@@ -136,8 +135,8 @@ void deleteElement(BinarySearchTree *tree, int value)
         printf("The tree is empty\n");
         return;
     }
-    if(searchElement(tree,value))
-    {   
+    if (searchElement(tree, value))
+    {
         IntTreeNode *head = deleteNode(tree->head, value);
         tree->head = head;
         tree->size = tree->size - 1;
@@ -188,101 +187,130 @@ IntTreeNode *maxValueNode(IntTreeNode *node)
     return current;
 }
 
-void preOrder(IntTreeNode *node, char *str, int *size)
+void preOrder(IntTreeNode *node, int **arr, int *size, int *index)
 {
     if (node == NULL)
         return;
 
-    while (snprintf(NULL, 0, "%s%d ", str, node->value) >= *size)
+    if (*index >= *size)
     {
         *size *= 2;
-        str = realloc(str, *size * sizeof(char));
-        if (str == NULL)
-        {
-            printf("Memory allocation failed in preOrder\n");
-            exit(1);
-        }
-    }
-
-    sprintf(str + strlen(str), "%d ", node->value);
-
-    preOrder(node->leftChild, str, size);
-    preOrder(node->rightChild, str, size);
-}
-
-void inOrder(IntTreeNode *node, char *str, int *size)
-{
-    if (node == NULL)
-        return;
-
-    inOrder(node->leftChild, str, size);
-
-    while (snprintf(NULL, 0, "%s%d ", str, node->value) >= *size)
-    {
-        *size *= 2;
-        str = realloc(str, *size * sizeof(char));
-        if (str == NULL)
+        *arr = realloc(*arr, *size * sizeof(int));
+        if (*arr == NULL)
         {
             printf("Memory allocation failed in inOrder\n");
             exit(1);
         }
     }
 
-    sprintf(str + strlen(str), "%d ", node->value);
+    (*arr)[(*index)++] = node->value;
 
-    inOrder(node->rightChild, str, size);
+    preOrder(node->leftChild, arr, size, index);
+    preOrder(node->rightChild, arr, size, index);
 }
 
-void postOrder(IntTreeNode *node, char *str, int *size)
+void inOrder(IntTreeNode *node, int **arr, int *size, int *index)
 {
     if (node == NULL)
         return;
 
-    postOrder(node->leftChild, str, size);
-    postOrder(node->rightChild, str, size);
+    inOrder(node->leftChild, arr, size, index);
 
-    while (snprintf(NULL, 0, "%s%d ", str, node->value) >= *size)
+    if (*index >= *size)
     {
         *size *= 2;
-        str = realloc(str, *size * sizeof(char));
-        if (str == NULL)
+        *arr = realloc(*arr, *size * sizeof(int));
+        if (*arr == NULL)
         {
-            printf("Memory allocation failed in postOrder\n");
+            printf("Memory allocation failed in inOrder\n");
             exit(1);
         }
     }
 
-    sprintf(str + strlen(str), "%d ", node->value);
+    (*arr)[(*index)++] = node->value;
+
+    inOrder(node->rightChild, arr, size, index);
+}
+
+void postOrder(IntTreeNode *node, int **arr, int *size, int *index)
+{
+    if (node == NULL)
+        return;
+
+    postOrder(node->leftChild, arr, size, index);
+    postOrder(node->rightChild, arr, size, index);
+
+    if (*index >= *size)
+    {
+        *size *= 2;
+        *arr = realloc(*arr, *size * sizeof(int));
+        if (*arr == NULL)
+        {
+            printf("Memory allocation failed in inOrder\n");
+            exit(1);
+        }
+    }
+
+    (*arr)[(*index)++] = node->value;
+}
+
+int *tree_to_array(BinarySearchTree *t, char method[])
+{
+    int size = t->size;
+    int *arr = malloc(sizeof(int) * size);
+
+    int index = 0;
+    if (!strcmp(method, "pre"))
+    {
+        preOrder(t->head, &arr, &size, &index);
+    }
+    else if (!strcmp(method, "in"))
+    {
+        inOrder(t->head, &arr, &size, &index);
+    }
+    else if (!strcmp(method, "post"))
+    {
+        postOrder(t->head, &arr, &size, &index);
+    }
+    else
+    {
+        printf("Chosen method is not valid. Choose 'in', 'pre' or 'post'");
+    }
+    return arr;
 }
 
 char *stringify_tree(BinarySearchTree *t, char method[])
 {
-    int size = (t->size + 1) * 12;
-    char *str = malloc(sizeof(char) * size);
+    int size = t->size;
+    char *str = malloc(sizeof(char) * size * 12);
     if (str == NULL)
     {
         printf("Memory allocation failed in stringify_tree\n");
         exit(1);
     }
-
     str[0] = '\0';
+    int *arr;
     if (!strcmp(method, "pre"))
     {
-        preOrder(t->head, str, &size);
+        arr = tree_to_array(t, "pre");
     }
     else if (!strcmp(method, "in"))
     {
-        inOrder(t->head, str, &size);
+        arr = tree_to_array(t, "in");
     }
     else if (!strcmp(method, "post"))
     {
-        postOrder(t->head, str, &size);
+        arr = tree_to_array(t, "post");
     }
     else
     {
         free(str);
         return "Chosen method is not valid. Choose 'in', 'pre' or 'post'";
     }
-    sprintf(str + strlen(str), "\n");
+    for (int i = 0; i < size; i++)
+    {
+        sprintf(str + strlen(str), "%d ", arr[i]);
+    }
+    sprintf(str + strlen(str) - 1, "\n");
     return str;
 }
