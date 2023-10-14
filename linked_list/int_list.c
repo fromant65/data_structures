@@ -17,7 +17,7 @@ IntLinkedList *newList()
     return l;
 }
 
-void push_item(IntLinkedList *l, int value)
+void list_push_item(IntLinkedList *l, int value)
 {
     IntNode *n = malloc(sizeof(IntNode));
     if (n == NULL)
@@ -43,7 +43,7 @@ void push_item(IntLinkedList *l, int value)
     l->size++;
 }
 
-void add_item(IntLinkedList *l, int value, int index)
+void list_add_item(IntLinkedList *l, int value, int index)
 {
     if (index > l->size)
     {
@@ -80,7 +80,7 @@ void add_item(IntLinkedList *l, int value, int index)
     l->size++;
 }
 
-void delete_item(IntLinkedList *l, int value)
+void list_delete_item(IntLinkedList *l, int value)
 {
     if (l->first == NULL)
     {
