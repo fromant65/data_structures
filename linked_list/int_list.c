@@ -17,7 +17,6 @@ IntLinkedList *newList()
     return l;
 }
 
-
 void push_item(IntLinkedList *l, int value)
 {
     IntNode *n = malloc(sizeof(IntNode));
@@ -115,42 +114,29 @@ void delete_item(IntLinkedList *l, int value)
     }
 }
 
+int *list_to_array(IntLinkedList *l)
+{
+    int *arr = malloc(sizeof(int) * l->size);
+    IntNode *node = l->first;
+    for (int i = 0; i < l->size; i++)
+    {
+        arr[i] = node->value;
+        node = node->next;
+    }
+    return arr;
+}
+
 char *stringify_list(IntLinkedList *l)
 {
-    int size = l->size * 12;
-    char *str = malloc(size * sizeof(char));
-    if (str == NULL)
+    char *str = malloc(sizeof(char) * l->size * 12);
+    str[0] = '\0';
+    IntNode *node = l->first;
+    for (int i = 0; node != NULL; i++)
     {
-        printf("Memory allocation failed\n");
-        exit(1);
+        sprintf(str + strlen(str), "%d ", node->value);
+        node = node->next;
     }
-
-    str[0] = '\0'; // Start with an empty string
-
-    IntNode *current = l->first;
-    while (current != NULL)
-    {
-        // Check if the string needs to be resized
-        while (snprintf(NULL, 0, "%s%d ", str, current->value) >= size)
-        {
-            size *= 2;
-            str = realloc(str, size * sizeof(char));
-            if (str == NULL)
-            {
-                printf("Memory allocation failed\n");
-                exit(1);
-            }
-        }
-
-        // Append the current value to the string
-        sprintf(str + strlen(str), "%d ", current->value);
-
-        current = current->next;
-    }
-
-    // Add the newline at the end
-    sprintf(str + strlen(str), "\n");
-
+    sprintf(str + strlen(str) - 1, "\n"); // Replacing the last blankspace with a line jump
     return str;
 }
 

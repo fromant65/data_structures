@@ -8,6 +8,7 @@ int test_new_list();
 int test_push_item();
 int test_add_item();
 int test_delete_item();
+int test_list_to_array();
 int test_stringify_list();
 
 void test_linked_list()
@@ -20,9 +21,11 @@ void test_linked_list()
     int t_add_item = test_add_item();
     printf("Testing delete_item function...\n");
     int t_delete_item = test_delete_item();
+    printf("Testing list_to_array function...\n");
+    int t_list_to_array = test_list_to_array();
     printf("Testing stringify_list function...\n");
     int t_stringify_list = test_stringify_list();
-    int test_result = t_new_list && t_push_item && t_add_item && t_delete_item && t_stringify_list;
+    int test_result = t_new_list && t_push_item && t_add_item && t_delete_item && t_list_to_array && t_stringify_list;
     if (test_result)
     {
         printf("Tests for linked list have passed successfully\n");
@@ -44,6 +47,10 @@ void test_linked_list()
         if (!t_delete_item)
         {
             printf("delete_item function not wotking properly\n");
+        }
+        if (!t_list_to_array)
+        {
+            printf("list_to_array function not wotking properly\n");
         }
         if (!t_stringify_list)
         {
@@ -115,6 +122,18 @@ int test_delete_item()
     return predicate;
 }
 
+int test_list_to_array()
+{
+    IntLinkedList *l = newList();
+    int predicate;
+    push_item(l, 1);
+    push_item(l, 2);
+    push_item(l, 3);
+    int *arr = list_to_array(l);
+    predicate = arr[0] == 1 && arr[1] == 2 && arr[2] == 3;
+    return predicate;
+}
+
 int test_stringify_list()
 {
     IntLinkedList *l = newList();
@@ -125,5 +144,5 @@ int test_stringify_list()
     printf("List example: ");
     print_list(l);
     free_list(l);
-    return strcmp(string, "1 2 3\n");
+    return !strcmp(string, "1 2 3\n");
 }
