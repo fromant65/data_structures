@@ -4,6 +4,12 @@
 #include "../nodes/int_tree_node.h"
 #include "tree.h"
 
+IntTreeNode *deleteNode(IntTreeNode *root, int value);
+void freeNodes(IntTreeNode *head);
+void preOrder(IntTreeNode *node, int **arr, int *size, int *index);
+void inOrder(IntTreeNode *node, int **arr, int *size, int *index);
+void postOrder(IntTreeNode *node, int **arr, int *size, int *index);
+
 BinarySearchTree *newTree()
 {
     BinarySearchTree *new_tree = malloc(sizeof(BinarySearchTree));
