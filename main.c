@@ -5,6 +5,7 @@
 #include "./stack/stack_test.h"
 #include "./queue/queue_test.h"
 #include "./tree/tree_test.h"
+#include "./matrix/matrix_test.h"
 
 int main()
 {
@@ -16,6 +17,7 @@ int main()
     printf("\n\nEnd of queue test\n\n");
     test_tree();
     printf("\nEnd of tree test\n\n");
-
+    test_matrix();
+    printf("\nEnd of matrix test\n\n");
     return 0;
 }
