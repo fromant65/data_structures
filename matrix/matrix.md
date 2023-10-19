@@ -193,7 +193,8 @@ Here's a simple use example of the Matrix data structure and some of its functio
 int main() {
     // Create a 2x2 matrix with predefined values.
     double initialData[2][2] = {{1.0, 2.0}, {3.0, 4.0}};
-    Matrix *matrixA = createMatrix(2, 2, initialData);
+    double **initialDataPointer = createMatrix(2, 2, initialData);
+    Matrix *matrixA = createMatrix(2, 2, initialDataPointer);
 
     // Print the original matrix.
     printf("Original Matrix A:\n");
