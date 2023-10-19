@@ -31,6 +31,18 @@ This project includes various data structures implemented in C, each with its ow
    - Header File: [tree.h]
    - Documentation: [tree.md]
 
+7. `matrix`: A data structure for managing matrices (newly added).
+
+   - Header File: [matrix.h]
+   - Documentation: [matrix.md]
+
+## Prerequisites
+
+Before compiling and running the project, make sure you have the following prerequisites:
+
+- A C compiler (e.g., GCC)
+- Make utility (for using the provided makefile)
+
 ## How to Compile and Run
 
 To compile and run the project, a `makefile` is provided in the repository. Please follow these steps:
