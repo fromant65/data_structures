@@ -43,7 +43,31 @@ The `int_queue.h` header file defines the `IntQueue` structure and functions for
 
 - `q`: A pointer to the queue.
 
-### `void print_queue(IntQueue *q)`
+### `int *queue_to_array(IntQueue *q)`
+
+- Converts the queue elements into an integer array.
+
+#### Parameters:
+
+- `q`: A pointer to the queue.
+
+#### Returns:
+
+- `int*`: A dynamically allocated integer array containing the elements of the queue.
+
+### `char *stringify_queue(IntQueue *q)`
+
+- Returns a string representation of the queue values separated by blank spaces.
+
+#### Parameters:
+
+- `q`: A pointer to the queue.
+
+#### Returns:
+
+- `char*`: A dynamically allocated string containing the queue values separated by blank spaces.
+
+### `print_queue(IntQueue *q)`
 
 - Prints the elements of the queue to the standard output.
 
@@ -89,21 +113,26 @@ int main() {
     // Print the queue.
     print_queue(queue);
 
-    // Delete an element from the front.
-    queue_delete_item(queue);
+    // Convert the queue to an array.
+    int *queueArray = queue_to_array(queue);
 
-    // Print the updated queue.
-    print_queue(queue);
+    // Print the array.
+    printf("Queue Elements as an Array: ");
+    for (int i = 0; i < queue->size; i++) {
+        printf("%d ", queueArray[i]);
+    }
+    printf("\n");
 
     // Free allocated memory.
+    free(queueArray);
     free_queue(queue);
 
     return 0;
 }
 ```
 
-This example demonstrates how to create a queue, add elements, delete elements, and print the queue using the provided functions.
+This example demonstrates how to create a queue, add elements, convert the queue to an array, and print both the queue and the array using the provided functions.
 
 ## Conclusion
 
-The documentation provides an overview of the `int_queue.h` header file, explains the structure and functions, describes usage, and includes a code example to illustrate how to use it in C programs.
+The documentation provides an overview of the int_queue.h header file, explains the structure and functions, describes usage, and includes a code example to illustrate how to use it in C programs.
