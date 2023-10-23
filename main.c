@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "./linked_list/list_test.h"
+#include "./linked_list/char/char_list_test.h"
 #include "./stack/stack_test.h"
 #include "./queue/queue_test.h"
 #include "./tree/tree_test.h"
@@ -11,6 +12,8 @@ int main()
 {
     test_linked_list();
     printf("\nEnd of linked list test\n\n");
+    test_char_linked_list();
+    printf("\nEnd of CHAR linked list test\n\n");
     test_stack();
     printf("\nEnd of stack test\n\n");
     test_queue();

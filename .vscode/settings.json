@@ -5,6 +5,8 @@
         "queue.h": "c",
         "stdio.h": "c",
         "int_queue.h": "c",
-        "int_node.h": "c"
+        "int_node.h": "c",
+        "list_test.h": "c",
+        "char_list_test.h": "c"
     }
 }
