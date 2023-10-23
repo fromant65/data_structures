@@ -8,6 +8,7 @@ int test_char_new_list();
 int test_char_list_push_item();
 int test_char_list_add_item();
 int test_char_list_delete_item();
+int test_char_list_search_item();
 int test_char_list_to_array();
 
 void test_char_linked_list()
@@ -20,8 +21,11 @@ void test_char_linked_list()
     int t_list_add_item = test_char_list_add_item();
     printf("Testing list_delete_item function...\n");
     int t_list_delete_item = test_char_list_delete_item();
-    printf("Testing list_to_array function...\n");
-    int test_char_result = t_new_list && t_list_push_item && t_list_add_item && t_list_delete_item ;
+    printf("Testing list_search_item function...\n");
+    int t_list_search_item = test_char_list_search_item();
+
+    int test_char_result = t_new_list && t_list_push_item && t_list_add_item && t_list_search_item && t_list_delete_item ;
+
     if (test_char_result)
     {
         printf("Tests for linked list have passed successfully\n");
@@ -44,6 +48,10 @@ void test_char_linked_list()
         {
             printf("list_delete_item function not wotking properly\n");
         }
+        if (!t_list_search_item)
+        {
+            printf("list_search_item function not wotking properly\n");
+        }
     }
 }
 
@@ -62,7 +70,7 @@ int test_char_list_push_item()
     char_list_push_item(list, "Hola");
     char_list_push_item(list, " como andas");
     CharNode *aux = list->first;
-    predicate &= !strcmp(aux->value," Hola");
+    predicate &= !strcmp(aux->value,"Hola");
     aux = aux->next;
     predicate &= !strcmp(aux->value," como andas");
     aux = aux->next;
@@ -108,6 +116,14 @@ int test_char_list_delete_item()
     predicate &= (aux == NULL);
     char_free_list(l);
     return predicate;
+}
+
+int test_char_list_search_item(){
+    CharLinkedList *l = newCharList();
+    char_list_push_item(l, "Hola");
+    char_list_push_item(l, " como");
+    char_list_push_item(l, "estas");
+    return char_list_search_item(l,"Hola")&&char_list_search_item(l," como")&&char_list_search_item(l,"estas")&&!char_list_search_item(l,"pina");
 }
 
 // int test_char_stringify_list()

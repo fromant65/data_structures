@@ -1,10 +1,6 @@
-#ifndef HASH_TABLE_H
-#define HASH_TABLE_H
+#ifndef HASH_TABLE_TEST_H
+#define HASH_TABLE_TEST_H
 
-typedef struct{
-    CharLinkedList *table;
-    int size;
-}CharHashTable;
-
+void test_hash_table();
 
 #endif

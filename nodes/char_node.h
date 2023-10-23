@@ -1,5 +1,5 @@
-#ifndef HASH_TABLE_H
-#define HASH_TABLE_H
+#ifndef CHAR_NODE_H
+#define CHAR_NODE_H
 
 typedef struct CharNode CharNode;
 

@@ -98,7 +98,7 @@ void char_list_delete_item(CharLinkedList *l, char* value)
         }
         if (aux == NULL)
         {
-            printf("The value doesn't exists %d\n", value);
+            printf("The value doesn't exists %s\n", value);
             return;
         }
         if (ant == NULL)
@@ -112,6 +112,15 @@ void char_list_delete_item(CharLinkedList *l, char* value)
         free(aux);
         l->size--;
     }
+}
+
+int char_list_search_item(CharLinkedList *l, char* value){
+    CharNode * aux = l->first;
+    while(strcmp(aux->value, value) && aux->next!=NULL)
+    {
+        aux= aux->next;
+    }
+    return !strcmp(aux->value, value);
 }
 
 // char *stringify_list(CharLinkedList *l)

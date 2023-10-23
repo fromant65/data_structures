@@ -7,13 +7,14 @@
 #include "./queue/queue_test.h"
 #include "./tree/tree_test.h"
 #include "./matrix/matrix_test.h"
+#include "./hash_table/hash_table_test.h"
 
 int main()
 {
     test_linked_list();
     printf("\nEnd of linked list test\n\n");
     test_char_linked_list();
-    printf("\nEnd of CHAR linked list test\n\n");
+    printf("\nEnd of char linked list test\n\n");
     test_stack();
     printf("\nEnd of stack test\n\n");
     test_queue();
@@ -22,5 +23,7 @@ int main()
     printf("\nEnd of tree test\n\n");
     test_matrix();
     printf("\nEnd of matrix test\n\n");
+    test_hash_table();
+    printf("\nEnd of hash table test\n\n");
     return 0;
 }
