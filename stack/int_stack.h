@@ -3,7 +3,7 @@
 
 typedef struct
 {
-    struct IntNode *last;
+    IntNode *last;
 } IntStack;
 
 IntStack *newStack();

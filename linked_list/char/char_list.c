@@ -17,7 +17,7 @@ CharLinkedList *newCharList()
     return l;
 }
 
-void char_list_push_item(CharLinkedList *l, char* value)
+void char_list_push_item(CharLinkedList *l, char *value)
 {
     CharNode *n = malloc(sizeof(CharNode));
     if (n == NULL)
@@ -43,7 +43,7 @@ void char_list_push_item(CharLinkedList *l, char* value)
     l->size++;
 }
 
-void char_list_add_item(CharLinkedList *l, char* value, int index)
+void char_list_add_item(CharLinkedList *l, char *value, int index)
 {
     if (index > l->size)
     {
@@ -80,7 +80,7 @@ void char_list_add_item(CharLinkedList *l, char* value, int index)
     l->size++;
 }
 
-void char_list_delete_item(CharLinkedList *l, char* value)
+void char_list_delete_item(CharLinkedList *l, char *value)
 {
     if (l->first == NULL)
     {
@@ -91,7 +91,7 @@ void char_list_delete_item(CharLinkedList *l, char* value)
     {
         CharNode *aux = l->first;
         CharNode *ant = NULL;
-        while (aux != NULL && strcmp(aux->value,value))
+        while (aux != NULL && strcmp(aux->value, value))
         {
             ant = aux;
             aux = aux->next;
@@ -114,35 +114,25 @@ void char_list_delete_item(CharLinkedList *l, char* value)
     }
 }
 
-int char_list_search_item(CharLinkedList *l, char* value){
-    CharNode * aux = l->first;
-    while(strcmp(aux->value, value) && aux->next!=NULL)
+int char_list_search_item(CharLinkedList *l, char *value)
+{
+    CharNode *aux = l->first;
+    if (aux == NULL)
+        return 0;
+    while (strcmp(aux->value, value) && aux->next != NULL)
     {
-        aux= aux->next;
+        aux = aux->next;
     }
     return !strcmp(aux->value, value);
 }
 
-// char *stringify_list(CharLinkedList *l)
-// {
-//     char *str = malloc(sizeof(char) * l->size * 12);
-//     str[0] = '\0';
-//     CharNode *node = l->first;
-//     for (int i = 0; node != NULL; i++)
-//     {
-//         sprintf(str + strlen(str), "%d ", node->value);
-//         node = node->next;
-//     }
-//     sprintf(str + strlen(str) - 1, "\n"); // Replacing the last blankspace with a line jump
-//     return str;
-// }
-
 void char_print_list(CharLinkedList *l)
 {
-    CharNode* aux = l->first;
-    for(int i = 0; i < l->size ; i++){        
+    CharNode *aux = l->first;
+    for (int i = 0; i < l->size; i++)
+    {
         printf("%s ", aux->value);
-        aux=aux->next;
+        aux = aux->next;
     }
 }
 
@@ -160,6 +150,7 @@ void char_free_list(CharLinkedList *l)
         while (aux != NULL)
         {
             next = aux->next;
+            free(aux->value);
             free(aux);
             aux = next;
         }

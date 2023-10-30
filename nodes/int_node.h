@@ -1,12 +1,10 @@
 #ifndef INT_NODE_H
 #define INT_NODE_H
 
-typedef struct IntNode IntNode;
-
-struct IntNode
+typedef struct IntNode_
 {
     int value;
-    IntNode *next;
-};
+    struct IntNode_ *next;
+} IntNode;
 
 #endif
