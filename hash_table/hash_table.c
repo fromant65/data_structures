@@ -20,11 +20,12 @@ HashTableLinked *newHashTable(int size)
 unsigned int hash(char *value, unsigned int hash_size)
 {
     unsigned int hash = FNV_OFFSET_BASIS;
-    while (*value != '\0')
+    int i = 0;
+    while (value[i] != '\0')
     {
-        hash = hash ^ *value;
+        hash = hash ^ value[i];
         hash = hash * FNV_PRIME;
-        value++;
+        i++;
     }
     return hash % hash_size;
 }
