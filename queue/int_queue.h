@@ -1,10 +1,11 @@
 #ifndef INT_QUEUE_H
 #define INT_QUEUE_H
 
+#include "../../nodes/int_node.h"
 typedef struct
 {
-    struct IntNode *first;
-    struct IntNode *last;
+    IntNode *first;
+    IntNode *last;
     int size;
 } IntQueue;
 

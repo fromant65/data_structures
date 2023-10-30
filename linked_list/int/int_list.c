@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "int_list.h"
-#include "../nodes/int_node.h"
+#include "../../nodes/int_node.h"
 
 IntLinkedList *newList()
 {
@@ -77,6 +77,20 @@ void list_add_item(IntLinkedList *l, int value, int index)
         n->next = aux->next;
         aux->next = n;
     }
+    l->size++;
+}
+
+void list_insert_item(IntLinkedList *l, int value)
+{
+    IntNode *n = malloc(sizeof(IntNode));
+    if (n == NULL)
+    {
+        printf("Mistake at insert elements to the list\n");
+        exit(1);
+    }
+    n->value = value;
+    n->next = l->first;
+    l->first = n;
     l->size++;
 }
 
