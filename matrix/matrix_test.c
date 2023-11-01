@@ -12,6 +12,7 @@ void test_matrix_escalar_mult();
 void test_matrix_mult();
 void test_matrix_det();
 void test_inverse_matrix();
+void test_erf_matrix();
 
 void test_matrix()
 {
@@ -29,6 +30,8 @@ void test_matrix()
     test_matrix_det();
     printf("Testing inverse_matrix...\n");
     test_inverse_matrix();
+    printf("Testing erf_matrix...\n");
+    test_erf_matrix();
 }
 
 void test_newMatrix()
@@ -209,4 +212,16 @@ void test_inverse_matrix()
     }
     freeMatrix(matrix1);
     freeMatrix(inverse);
+}
+
+void test_erf_matrix(){
+    double m[3][4]={
+        {1,2,3,-5},
+        {2,5,3,-4},
+        {-3,4,2,3}
+    };
+        double**m1 = createMatrix(3,4,m);
+    Matrix * matrix = newMatrix(3,4,m1);
+    Matrix * erf_matrix= erfMatrix(matrix);
+    print_matrix(erf_matrix);
 }

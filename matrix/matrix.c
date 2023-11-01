@@ -334,6 +334,64 @@ Matrix *identity_matrix(int m)
     return result;
 }
 
+// Multiplies a vector for a constant alpha
+double* type1(double *row, int size, double alpha)
+{
+    for (int i = 0; i < size; i++)
+    {
+        row[i] *= alpha;
+    }
+    return row;
+}
+
+// Sums multiple of a vector to another
+double* type2(double *row1, double *row2, int size, double alpha)
+{
+    for (int i = 0; i < size; i++)
+    {
+        row1[i] += alpha * row2[i];
+    }
+    return row1;
+}
+
+double **copyMatrix(Matrix *matrix)
+{
+    double **m = matrix->matrix;
+    double **newm = malloc(sizeof(double *) * matrix->m);
+    for (int i = 0; i < matrix->m; i++)
+    {
+
+        newm[i] = malloc(sizeof(double) * matrix->n);
+        for (int j = 0; j < matrix->n; j++)
+        {
+            newm[i][j] = m[i][j];
+        }
+    }
+    return newm;
+}
+
+Matrix *erfMatrix(Matrix *matrix)
+{
+    //// NO FUNCIONA SI LA MATRIZ TIENE UN 0 EN [0][0]
+    double **m = copyMatrix(matrix);
+    for (int i = 0; i < matrix->m; i++)
+    {
+        // paso 1: conseguir un 1 en m[i][i]
+        m[i]=type1(m[i], matrix->n, 1 / m[i][i]);
+        // paso 2: conseguir ceros en el resto de la columna
+        for (int j = i+1; j < matrix->m; j++)
+        {
+            m[j]=type2(m[j], m[i], matrix->n, -m[j][i] / m[i][i]);
+        }
+        
+    }
+    // paso 3: eliminar ceros sobre los 1 principales
+
+    ///
+    Matrix *erf_matrix = newMatrix(matrix->m, matrix->n, m);
+    return erf_matrix;
+}
+
 void print_matrix(Matrix *m)
 {
     for (int i = 0; i < m->m; i++)

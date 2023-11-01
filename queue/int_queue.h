@@ -1,7 +1,8 @@
 #ifndef INT_QUEUE_H
 #define INT_QUEUE_H
 
-#include "../../nodes/int_node.h"
+#include "../nodes/int_node.h"
+
 typedef struct
 {
     IntNode *first;

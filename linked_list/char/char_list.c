@@ -141,7 +141,6 @@ void char_free_list(CharLinkedList *l)
     if (l->first == NULL)
     {
         free(l);
-        return;
     }
     else
     {
@@ -150,7 +149,6 @@ void char_free_list(CharLinkedList *l)
         while (aux != NULL)
         {
             next = aux->next;
-            free(aux->value);
             free(aux);
             aux = next;
         }

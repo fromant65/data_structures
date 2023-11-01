@@ -1,6 +1,8 @@
 #ifndef STACK_H
 #define STACK_H
 
+#include "../nodes/int_node.h"
+
 typedef struct
 {
     IntNode *last;
