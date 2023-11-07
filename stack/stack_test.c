@@ -37,12 +37,10 @@ void test_stack_push()
 void test_stack_pop()
 {
     IntStack *stack = newStack();
-    int first_stack_pop = stack_pop(stack);
-    assert(first_stack_pop == 0);
     stack_push(stack, 10);
     stack_push(stack, 20);
-    int second_stack_pop = stack_pop(stack);
+    int pop = stack_pop(stack);
     IntNode *last = stack->last;
-    assert(second_stack_pop == 20 && last->value == 10);
+    assert(pop == 20 && last->value == 10);
     free_stack(stack);
 }

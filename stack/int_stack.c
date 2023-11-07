@@ -33,7 +33,7 @@ int stack_pop(IntStack *stack)
     if (stack->last == NULL)
     {
         printf("There are no items to pop\n");
-        return NULL;
+        exit(1);
     }
     IntNode *aux = stack->last;
     int value = aux->value;

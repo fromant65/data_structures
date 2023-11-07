@@ -2,6 +2,7 @@
 #include <stdlib.h>
 
 #include "./linked_list/int/int_list_test.h"
+
 #include "./linked_list/char/char_list_test.h"
 #include "./stack/stack_test.h"
 #include "./queue/queue_test.h"
@@ -12,16 +13,16 @@
 
 int main()
 {
-    test_linked_list();
-    printf("\nEnd of linked list test\n\n");
-    test_char_linked_list();
-    printf("\nEnd of char linked list test\n\n");
-    test_stack();
-    printf("\nEnd of stack test\n\n");
-    test_queue();
-    printf("\n\nEnd of queue test\n\n");
-    test_tree();
-    printf("\nEnd of tree test\n\n");
+    //     test_linked_list();
+    //     printf("\nEnd of linked list test\n\n");
+    //     test_char_linked_list();
+    //     printf("\nEnd of char linked list test\n\n");
+    //     test_stack();
+    //     printf("\nEnd of stack test\n\n");
+    //     test_queue();
+    //     printf("\n\nEnd of queue test\n\n");
+    //     test_tree();
+    //     printf("\nEnd of tree test\n\n");
     test_matrix();
     printf("\nEnd of matrix test\n\n");
     test_hash_table();

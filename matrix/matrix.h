@@ -19,5 +19,6 @@ double matrix_det(Matrix *matrix);                     // returns the determinan
 Matrix *inverse_matrix(Matrix *matrix);                // returns the inverse of the matrix if it exists, NULL otherwise
 Matrix *null_matrix(int m, int n);                     // returns a matrix full of zeros of size m * n
 Matrix *identity_matrix(int m);                        // returns an identity matrix of size m
+Matrix *erfMatrix(Matrix *matrix);                     // returns the correspondant row echelon form matrix
 void print_matrix(Matrix *m);                          // prints matrix
 #endif
