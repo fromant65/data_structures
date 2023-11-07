@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS  = -g -Wall
 
 # folders containing source files
-DIRS = nodes stack queue linked_list/int linked_list/char tree matrix hash_table
+DIRS = nodes stack queue linked_list/int linked_list/char tree matrix hash_table public_methods public_methods/test
 # all .c files in the folders
 SOURCES = $(foreach dir,$(DIRS),$(wildcard $(dir)/*.c)) main.c
 # .o files will be created from .c files
