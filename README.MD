@@ -1,6 +1,9 @@
 # C Data Structures Project
 
-This project includes various data structures implemented in C, each with its own dedicated header file and individual documentation. The available data structures are as follows:
+
+
+## Legacy Code Folder
+This folder includes various type specific data structures implemented in C, each with its own dedicated header file and individual documentation. The available data structures are as follows:
 
 1. `int_node`: Simple nodes with an optional child node.
 
