@@ -1,6 +1,7 @@
 # C Data Structures Project
 
-
+## Main folder
+This folder includes various generic data structures implemented in C. 
 
 ## Legacy Code Folder
 This folder includes various type specific data structures implemented in C, each with its own dedicated header file and individual documentation. The available data structures are as follows:
