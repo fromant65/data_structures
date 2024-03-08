@@ -19,7 +19,7 @@ void arrayPush(Array* arr, Object obj){
     }
 }
 void arrayPop(Array* arr){
-    if(arr->length<arr->max_size/2){
+    if(arr->length<arr->max_size/3){
         arrayShrink(arr);
     }
     freeObjectData(arr->data[arr->length-1]);
@@ -54,7 +54,7 @@ void arrayExtend(Array *arr){
 }
 
 void arrayShrink(Array *arr){
-    arr->max_size/=2;
+    arr->max_size=arr->length+1;
     arr->data = realloc(arr->data, sizeof(Object)*arr->max_size);
 }
 
