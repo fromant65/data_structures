@@ -1,7 +1,10 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "object/object.h"
+#include "array/array.h"
+
 int main(){
+/*
     int i = 5;
     double f = 9.2;
     char c = 'K';
@@ -32,9 +35,28 @@ int main(){
     printf("string: ");
     printObject(c8);
     free(s);
+    freeObjectData(c1);
+    freeObjectData(c2);
+    freeObjectData(c3);
+    freeObjectData(c4);
     freeObjectData(c5);
     freeObjectData(c6);
     freeObjectData(c7);
     freeObjectData(c8);
+*/
+    Array arr = newArray(INT);
+    for(int i = 0; i<8; i++){
+        Object o = newObject(arr.type,NULL);
+        arrayPush(&arr,o);
+    }
+    arrayPrint(arr);
+    arrayPop(&arr);
+    arrayPrint(arr);
+    int x = -10;
+    Object o = newObject(arr.type, &x);
+    arrayInsert(&arr, 4, o);
+    arrayPrint(arr);
+    arrayDelete(&arr, 2);
+    arrayPrint(arr);
     return 0;
 }

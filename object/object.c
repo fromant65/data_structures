@@ -10,6 +10,7 @@ void* readData(enum Types type);
 */
 Object newObject(enum Types type, void* data){
     size_t size = getTypeSize(type);
+    bool is_data_static = true;
     if(size == 0){
         Object o = {NULL, 0, -1};
         printf("The provided data type is not valid: %d", type);
@@ -17,21 +18,22 @@ Object newObject(enum Types type, void* data){
     }
     if(data==NULL){
         data = readData(type);
+        is_data_static = false;
     }
-    Object o={data, size, type};
+    Object o={data, size, type, is_data_static};
     return o;
 }
 
-void printObject(Object obj){
+void printObject(Object obj, char* separator){
     if(obj.ref==NULL){
-        printf("Null object");
+        printf("Null object\n");
         return;
     }
-    printingFunctions[obj.type](obj.ref);
+    printingFunctions[obj.type](obj.ref, separator);
 }
 
 void freeObjectData(Object obj){
-    if(obj.ref==NULL){
+    if(obj.ref==NULL || obj.is_data_static){
         return;
     }
     freeType(obj.type)(obj.ref);

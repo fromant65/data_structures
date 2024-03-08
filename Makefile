@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS  = -g -Wall
 
 # folders containing source files
-DIRS = object types
+DIRS = object types array
 # all .c files in the folders
 SOURCES = $(foreach dir,$(DIRS),$(wildcard $(dir)/*.c)) main.c
 # .o files will be created from .c files

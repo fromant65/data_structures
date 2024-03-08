@@ -67,20 +67,30 @@ void* readString(){
  * Each one takes a void pointer for a variable of their type and printf's it with a line break
 */
 
-void printInt(void* ref){
-    printf("%d\n", *(int*)(ref));
+void printInt(void* ref, char* separator){
+    char line_break[] = "\n";
+    if(separator==NULL) separator = line_break;
+
+    printf("%d%s", *(int*)(ref), separator);
 }
 
-void printDouble(void* ref){
-    printf("%lf\n", *(double*)(ref));
+void printDouble(void* ref, char* separator){
+    char line_break[] = "\n";
+    if(separator==NULL) separator = line_break;
+
+    printf("%lf%s", *(double*)(ref), separator);
 }
 
-void printChar(void* ref){
-    printf("%c\n", *(char*)(ref));
+void printChar(void* ref, char* separator){
+    char line_break[] = "\n";
+    if(separator==NULL) separator = line_break;
+    printf("%c%s", *(char*)(ref), separator);
 }
 
-void printString(void* ref){
-    printf("%s\n", *(char**)(ref));
+void printString(void* ref, char* separator){
+    char line_break[] = "\n";
+    if(separator==NULL) separator = line_break;
+    printf("%s%s", *(char**)(ref), separator);
 }
 
 FreeingFunction freeType(enum Types type){

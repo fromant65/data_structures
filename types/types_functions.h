@@ -17,10 +17,10 @@ void* readDouble();
 void* readChar();
 void* readString();
 // Writing functions
-void printInt(void*);
-void printDouble(void*);
-void printChar(void*);
-void printString(void*);
+void printInt(void*, char*);
+void printDouble(void*, char*);
+void printChar(void*, char*);
+void printString(void*, char*);
 // Freeing functions
 typedef void (*FreeingFunction)(void*);
 FreeingFunction freeType(enum Types type);
@@ -28,7 +28,7 @@ void freeStaticType(void*);
 void freeStringType(void*);
 // Function arrays - The arrays are declared in the order of the enum Types declaration
 typedef void* (*ReadFunction)();
-typedef void (*PrintFunction)(void*);
+typedef void (*PrintFunction)(void*, char*);
 extern ReadFunction readingFunctions[];
 extern PrintFunction printingFunctions[];
 
