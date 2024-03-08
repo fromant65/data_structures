@@ -12,5 +12,6 @@ typedef struct{
 size_t getTypeSize(enum Types type);
 Object newObject(enum Types type, void* data);
 void printObject(Object obj);
+void freeObjectData(Object obj);
 
 #endif

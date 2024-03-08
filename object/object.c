@@ -30,6 +30,13 @@ void printObject(Object obj){
     printingFunctions[obj.type](obj.ref);
 }
 
+void freeObjectData(Object obj){
+    if(obj.ref==NULL){
+        return;
+    }
+    freeType(obj.type)(obj.ref);
+}
+
 void* readData(enum Types type){
     return readingFunctions[type]();
 }

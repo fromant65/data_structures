@@ -31,5 +31,10 @@ int main(){
     printObject(c7);
     printf("string: ");
     printObject(c8);
+    free(s);
+    freeObjectData(c5);
+    freeObjectData(c6);
+    freeObjectData(c7);
+    freeObjectData(c8);
     return 0;
 }

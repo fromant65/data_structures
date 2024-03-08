@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "types_functions.h"
+#include "../object/object.h"
 
 size_t getTypeSize(enum Types type){
     switch(type){
@@ -80,6 +81,31 @@ void printChar(void* ref){
 
 void printString(void* ref){
     printf("%s\n", *(char**)(ref));
+}
+
+FreeingFunction freeType(enum Types type){
+    switch(type){
+        case INT:
+            return freeStaticType;
+        case DOUBLE:
+            return freeStaticType;
+        case CHAR:
+            return freeStaticType;
+        case STRING:
+            return freeStringType;
+        default:
+            return freeStaticType;
+    }
+}
+
+void freeStaticType(void* ptr){
+    free(ptr);
+}
+
+void freeStringType(void* ptr){
+    char* string = *(char**)ptr;
+    free(string);
+    free(ptr);
 }
 
 ReadFunction readingFunctions[]={readInt, readDouble, readChar, readString};

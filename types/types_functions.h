@@ -9,19 +9,24 @@ enum Types{
     STRING
 };
 
-//get size
+// Get size
 size_t getTypeSize(enum Types size);
-//reading functions
+// Reading functions
 void* readInt();
 void* readDouble();
 void* readChar();
 void* readString();
-//writing functions
+// Writing functions
 void printInt(void*);
 void printDouble(void*);
 void printChar(void*);
 void printString(void*);
-//Function arrays - The arrays are declared in the order of the enum Types declaration
+// Freeing functions
+typedef void (*FreeingFunction)(void*);
+FreeingFunction freeType(enum Types type);
+void freeStaticType(void*);
+void freeStringType(void*);
+// Function arrays - The arrays are declared in the order of the enum Types declaration
 typedef void* (*ReadFunction)();
 typedef void (*PrintFunction)(void*);
 extern ReadFunction readingFunctions[];
