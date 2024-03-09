@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include "object/object.h"
 #include "array/array.h"
-
+#include "singly_linked_list/sll.h"
 int main(){
 /*
     int i = 5;
@@ -44,6 +44,7 @@ int main(){
     freeObjectData(c7);
     freeObjectData(c8);
 */
+/*
     Array arr = newArray(INT);
     for(int i = 0; i<8; i++){
         Object o = newObject(arr.type,NULL);
@@ -58,5 +59,20 @@ int main(){
     arrayPrint(arr);
     arrayDelete(&arr, 2);
     arrayPrint(arr);
+*/
+    SinglyLinkedList l = newSinglyLinkedList(INT);
+    for(int i = 0; i<4; i++){
+        Object o = newObject(l.type,NULL);
+        SLLPush(&l,o);
+    }
+    SLLPrint(l);
+    int x = -10;
+    Object o = newObject(l.type, &x);
+    SLLUnshift(&l, o);
+    SLLPrint(l);
+    SLLShift(&l);
+    SLLPrint(l);
+    SLLPop(&l);
+    SLLPrint(l);
     return 0;
 }
