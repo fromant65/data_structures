@@ -19,16 +19,6 @@ typedef struct{
 } Object;
 
 /**
- * @brief Gets the size of a given type.
- * 
- * This function returns the size in bytes of a given type.
- * 
- * @param type The type for which to get the size.
- * @return The size in bytes of the given type.
- */
-size_t getTypeSize(enum Types type);
-
-/**
  * @brief Creates a new Object of a specified type.
  * 
  * This function initializes a new Object with the specified type and data.
