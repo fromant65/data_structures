@@ -1,7 +1,7 @@
 # C Data Structures Project
 
 ## Main folder
-This folder includes various generic data structures implemented in C. 
+This folder is WIP for various generic data structures implemented in C with void*. 
 
 ## Legacy Code Folder
 This folder includes various type specific data structures implemented in C, each with its own dedicated header file and individual documentation. The available data structures are as follows:
@@ -39,6 +39,10 @@ This folder includes various type specific data structures implemented in C, eac
 
    - Header File: [matrix.h]
    - Documentation: [matrix.md]
+
+## Legacy Code 2 Folder 
+
+Implements arrays and singly linked lists with a generic Object. there are 4 types supported for this Object.
 
 ## Prerequisites
 

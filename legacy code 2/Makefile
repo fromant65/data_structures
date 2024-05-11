@@ -1,10 +1,10 @@
 # the compiler to use
 CC = gcc
 # compiler flags
-CFLAGS  = -g -Wall -Werror
+CFLAGS  = -g -Wall
 
 # folders containing source files
-DIRS = array 
+DIRS = object types array singly_linked_list
 # all .c files in the folders
 SOURCES = $(foreach dir,$(DIRS),$(wildcard $(dir)/*.c)) main.c
 # .o files will be created from .c files
