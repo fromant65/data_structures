@@ -71,8 +71,9 @@ GArray GArrayDelete(GArray arr, size_t index, DestructorFunction f);
 
 /**
  * @brief Sorts the array acording to some comparison function
+ * To do
 */
-GArray GArraySort(GArray arr, ComparisonFunction comp);
+//GArray GArraySort(GArray arr, ComparisonFunction comp);
 
 /**
  * @brief Maps the parsing function to the array
