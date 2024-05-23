@@ -22,18 +22,18 @@ Queue enQueue(Queue q, void* data){
     if((q.last+1)%q.max_size == q.first%q.max_size){
         return q;
     }
-    q.array.data[(q.last+1)%q.max_size]=data;
+    q.array.data[q.last]=data;
     q.last=(q.last+1)%q.max_size;
     return q;
 }
 
 /**
- * @brief Removes the last element from the queue
+ * @brief Removes the first element from the queue
 */
 Queue deQueue(Queue q, DestructorFunction d){
-    d(q.array.data[q.last]);
-    if(q.last==0) q.last=q.max_size-1;
-    else q.last--;
+    d(q.array.data[q.first]);
+    if(q.first==q.max_size-1) q.first=0;
+    else q.first++;
     return q;
 }
 
@@ -57,7 +57,7 @@ void* QueueStart(Queue q){
 */
 void destroyQueue(Queue q, DestructorFunction d){
     if(q.first<q.last){
-        for(int i=q.first; i<=q.last;i++){
+        for(int i=q.first; i<q.last;i++){
             d(q.array.data[i]);
         }
     }else{
@@ -65,4 +65,5 @@ void destroyQueue(Queue q, DestructorFunction d){
             d(q.array.data[i%q.max_size]);
         }
     }
+    free(q.array.data);
 }

@@ -4,7 +4,7 @@ CC = gcc
 CFLAGS  = -g -Wall -Werror
 
 # folders containing source files
-DIRS = array list stack
+DIRS = array list stack queue
 # all .c files in the folders
 SOURCES = $(foreach dir,$(DIRS),$(wildcard $(dir)/*.c)) main.c
 # .o files will be created from .c files
