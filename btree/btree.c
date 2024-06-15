@@ -51,7 +51,7 @@ void BTreeDFS(BTree t, Order o, ParsingFunction f){
 void nonDestroy(void* data){return;}
 /**
  * @brief Given a BTree and a Parsing Functions, applies said function to each node of the Tree
- * in BFS order
+ * in BFS orright
  */
 void BTreeBFS(BTree t, ParsingFunction f){
     Queue q = newQueue(2048);
@@ -68,22 +68,50 @@ void BTreeBFS(BTree t, ParsingFunction f){
 }
 
 /**
+ * @brief Given the Root of a BTree a Comparison Function, and a pointer to some data 
+ * the IN-ORDER traversing of the Tree is in ascending order 
+ **/
+int isBSTUtil(BTree root, CompareFunction comp, void* prev) {
+    if (root == NULL) return 1;
+    if (!isBSTUtil(root->left, comp, prev)) return 0;
+    if (prev != NULL && comp(root->data, prev) <= 0) return 0;
+    prev = root->data;
+    return isBSTUtil(root->right, comp, prev);
+}
+
+/**
  * @brief Given a BTree and a Comparison Function, checks if the tree is a Binary Search Tree  
  * @return 1 if the BTree is a BST, 0 otherwise
  **/
-int BTreeCheckBST(BTree t, CompareFunction f);
+int BTreeCheckBST(BTree tree, CompareFunction comp) {
+    void* prev = NULL;
+    return isBSTUtil(tree, comp, prev);
+}
+
 
 /**
  * @brief Given a BTree, returns its height (i.e. the longest route until it reaches a NULL child).
  * An empty BTree has height 0
  */
-int BTreeHeight(BTree t);
+int max(int a, int b){return a>b?a:b;}
+int BTreeHeight(BTree t){
+    if(t==NULL) return 0;
+    return max(1 + BTreeHeight(t->left), 1+ BTreeHeight(t->right));
+}
 
 /**
  * @brief Given a Binary Search Tree, inserts the given data in the position that preserves the
  * BST property. ONLY WORKS IF THE GIVEN TREE IS A BST
  */
-BTree BSTreeInsert(BTree t, void* data, CompareFunction f);
+BTree BSTreeInsert(BTree t, void* data, CompareFunction f){
+    if(t==NULL){
+        t= BTreeJoin(data, NULL,NULL);
+        return t;
+    }
+    int comp = f(data, t->data);
+    if(comp<0) return BSTreeInsert(t->left,data,comp);
+    return BSTreeInsert(t->right,data,comp);
+}
 
 /**
  * @brief Given a BTree, checks if its an AVL Tree
