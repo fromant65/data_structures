@@ -114,6 +114,61 @@ BTree BSTreeInsert(BTree t, void* data, CompareFunction f){
 }
 
 /**
+ * @brief Given a Binary Search Tree and some data, searches the data in the tree
+ * @return 1 if the data is in the tree, 0 if it isn't
+ */
+int BSTreeSearch(BTree t, void* data, CompareFunction f){
+    if(t==NULL) return 0;
+    int comp = f(data, t->data)==0;
+    if(comp==0) return 1;
+    if(comp<0) return BSTreeSearch(t->left, data, f);
+    return BSTreeSearch(t->right, data, f);
+}
+
+/**
+ * @brief Removes a node containing the specified data from the BST.
+ * If the data is not in the tree, returns the given tree.
+ *
+ * @param tree The BST to modify.
+ * @param data The data to remove.
+ * @param compare The comparison function for data comparison.
+ * @return The modified BST.
+ */
+BTree bstree_remove(BTree tree, void* data, CompareFunction compare) {
+    if (tree == NULL) {
+        return NULL;
+    }
+    int comparison;
+    if (tree->data == NULL || data == NULL) // If either data is NULL, we need to remove the node
+        comparison = 0;
+    else comparison = compare(tree->data, data);
+    if (comparison < 0) tree->right = bstree_remove(tree->right, data, compare);
+    else if (comparison > 0) tree->left = bstree_remove(tree->left, data, compare);
+    else { // Node with the key to be deleted found
+        if (tree->left == NULL) {
+            BTree to_destroy = tree;
+            tree = tree->right;
+            free(to_destroy);
+        } else if (tree->right == NULL) {
+            BTree to_destroy = tree;
+            tree = tree->left;
+            free(to_destroy);
+        } else { // The tree has two children
+            BTree node_swap = tree->right, temp = tree;
+            while (node_swap->left != NULL) {
+                temp = node_swap;
+                node_swap = node_swap->left;
+            }
+            tree->data = node_swap->data;
+            node_swap->data = NULL;
+            if (temp == tree) temp->right = bstree_remove(node_swap, node_swap->data, compare);
+            else temp->left = bstree_remove(node_swap, node_swap->data, compare);
+        }
+    }
+    return tree;
+}
+
+/**
  * @brief Given a BTree, checks if its an AVL Tree
  * @return 1 if it's an ALV, 0 otherwise
  */

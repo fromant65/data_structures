@@ -70,6 +70,18 @@ int BTreeHeight(BTree t);
 BTree BSTreeInsert(BTree t, void* data, CompareFunction f);
 
 /**
+ * @brief Given a Binary Search Tree and some data, searches the data in the tree
+ * @return 1 if the data is in the tree, 0 if it isn't
+ */
+int BSTreeSearch(BTree t, void* data, CompareFunction f);
+
+/**
+ * @brief Given a Binary Search Tree and some data, deletes the data from the tree if it is there.
+ * If the data is not in the tree, returns the given tree
+ */
+BTree BSTreeRemove(BTree t, void* data, CompareFunction f);
+
+/**
  * @brief Given a BTree, checks if its an AVL Tree
  * @return 1 if it's an ALV, 0 otherwise
  */
